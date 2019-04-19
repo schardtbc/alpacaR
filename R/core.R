@@ -76,7 +76,7 @@ alpacaGet <- function(endpoint) {
 #' @export
 alpacaPost <- function(endpoint, body) {
   url <- paste0(get_base_url(),"/",get_api_version(),"/",endpoint)
-  show(url)
+
   credentials <- get_credentials();
   res <- httr::POST(url,httr::add_headers(`APCA-API-KEY-ID` = credentials$key_id,
                                           `APCA-API-SECRET-KEY` = credentials$secret_key,
@@ -88,7 +88,7 @@ alpacaPost <- function(endpoint, body) {
 #' @export
 alpacaDelete <- function(endpoint) {
   url <- paste0(get_base_url(),"/",get_api_version(),"/",endpoint)
-  show(url)
+
   credentials <- get_credentials();
   res <- httr::DELETE(url,httr::add_headers(`APCA-API-KEY-ID` = credentials$key_id,`APCA-API-SECRET-KEY` = credentials$secret_key))
 }

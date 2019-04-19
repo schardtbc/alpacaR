@@ -36,25 +36,22 @@ With an Alpaca brokerage account, users have access to:
     aapl <- newTrade("AAPL","buy",50,time_in_force = "day")
     # submit the  trade
     aaplOrder <- submitTrade(aapl)
-
-    ## [1] "https://paper-api.alpaca.markets/v1/orders"
-
     aaplOrder
 
     ## $id
-    ## [1] "59a4a434-7c93-4cfb-9ee3-8750abdda35e"
+    ## [1] "aa11e5a7-a1e1-462e-ab75-5faa1dc1680a"
     ## 
     ## $client_order_id
-    ## [1] "ATO_1555658511.95943_AAPL"
+    ## [1] "ATO_1555659752.28707_AAPL"
     ## 
     ## $created_at
-    ## [1] "2019-04-19T07:21:52.341220513Z"
+    ## [1] "2019-04-19T07:42:32.681841246Z"
     ## 
     ## $updated_at
-    ## [1] "2019-04-19T07:21:52.347033565Z"
+    ## [1] "2019-04-19T07:42:32.687614952Z"
     ## 
     ## $submitted_at
-    ## [1] "2019-04-19T07:21:52.33785717Z"
+    ## [1] "2019-04-19T07:42:32.678653731Z"
     ## 
     ## $filled_at
     ## NULL
@@ -112,5 +109,3 @@ With an Alpaca brokerage account, users have access to:
 
     # cancel the order
     cancelOrder(aaplOrder)
-
-    ## [1] "https://paper-api.alpaca.markets/v1/orders/59a4a434-7c93-4cfb-9ee3-8750abdda35e"
