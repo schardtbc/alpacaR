@@ -1,0 +1,42 @@
+---
+title: "README"
+author: "Bruce C. Schardt"
+date: "4/16/2019"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(alpacaR)
+library(ggplot2)
+library(tidyquant)
+```
+
+## alpacaR a package for trading with real-time market data for free
+
+Who Is Alpaca For?
+
+Alpaca Securities provides brokerage services to technology-minded users with a variety of experiences including general usage of APIs or automation of investing and trading. We have users come from two of the largest quantitative research platforms, Quantopian and QuantConnect. Others are experienced automated or manual traders coming from Interactive Brokers, TD Ameritrade, or Robinhood. Some are crypto traders expanding into equities. Some have no background in trading at all and are just learning to code. We even receive inquiries from boutique quant funds (corporate accounts are on our roadmap!). We welcome them all and seek to provide a platform for anyone, novice or experienced, to automate their investing and trading.
+
+Alpaca users trade a variety of strategies ranging from passive to active, long-term to short-term intraday. As a point of reference, we have some users who execute hundreds of trades worth millions of dollars a day.
+
+With an Alpaca brokerage account, users have access to:
+
+- Commission-free trading
+- An official API that is constantly being improved and updated
+- Easy to understand API documentation
+- Free, real-time Consolidated Market Data
+- Paper trading for testing your strategies
+- Fully working, example algorithms that can be deployed immediately
+- Multiple support channels
+
+```{r cars}
+# create a trade object
+aapl <- newTrade("AAPL","buy",50,time_in_force = "day")
+# submit the  trade
+aaplOrder <- submitTrade(aapl)
+aaplOrder
+# cancel the order
+cancelOrder(aaplOrder)
+```
+

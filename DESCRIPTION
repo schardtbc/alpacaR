@@ -1,0 +1,24 @@
+Package: alpacaR
+Type: Package
+Title: Interface to the Alpaca Online Brokerage trading API
+Version: 0.1.0
+Author: Bruce C. Schardt
+Maintainer: Bruce C. Schardt <schardt.bruce.curtis@gmail.com>
+Description: Alpaca Hack Financial Systems: Alpaca API lets you build and trade with real-time market data for free
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+Imports:
+    magrittr,
+    dplyr,
+    glue,
+    httr,
+    tibble,
+    tidyr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
