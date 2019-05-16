@@ -6,6 +6,11 @@
 \usage{
 alpacaPost(endpoint, body)
 }
+\arguments{
+\item{endpoint}{the api endpoint}
+
+\item{body}{order information}
+}
 \description{
 post request to alpaca trading api (base url) used to submit orders
 }

@@ -6,6 +6,9 @@
 \usage{
 alpacaDelete(endpoint)
 }
+\arguments{
+\item{endpoint}{api endpoint}
+}
 \description{
 delete request to alpaca trading api (base url) used to cancel orders
 }
