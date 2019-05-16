@@ -6,6 +6,9 @@
 \usage{
 alpacaGet(endpoint)
 }
+\arguments{
+\item{endpoint}{the api endpoint}
+}
 \description{
 get request to alpaca trading api (base url)
 }

@@ -107,8 +107,12 @@ assets <- function(symbol = NULL){
   } else {
     res<-alpacaGet(glue::glue("assets/{symbol}"))
   }
-  data <- httr::content(res,as = "parsed")
-  tibble::as_tibble(do.call(rbind,data)) %>% tidyr::unnest()  %>% dplyr::filter(tradable) %>% dplyr::arrange(symbol)
+  d0 <- httr::content(res,as = "parsed")
+  d1 <- lapply(d0,function(x) {lapply(x,function(y) {ifelse(is.null(y),NA,y)})})
+  tibble::as_tibble(do.call(rbind,d1)) %>% tidyr::unnest()  %>%
+    dplyr::filter(tradable) %>%
+    dplyr::arrange(symbol) %>%
+    dplyr::select(-Archives)
 }
 
 #' market calendar as dataframe
