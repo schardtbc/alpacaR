@@ -3,7 +3,7 @@
 #' @export
 account <- function(){
   res <- alpacaGet("account");
-  content(res,as = "parsed")
+  res$content
 }
 
 #' get list of orders
@@ -16,7 +16,7 @@ orders <- function(order_id = NULL){
   } else {
     res<-alpacaGet(glue::glue("orders/{order_id}"))
   }
-  httr::content(res,as = "parsed")
+  res$content
 }
 
 #' create a new Trade object
@@ -73,7 +73,7 @@ submitTrade <- function(trade){
   res <- alpacaPost("orders",trade)
   structure(
     class = c("order"),
-    httr::content(res,as = "parsed")
+    res$content
   )
 }
 
@@ -83,6 +83,7 @@ submitTrade <- function(trade){
 cancelOrder <- function(order) {
   id <- order$id
   res <- alpacaDelete(glue::glue("orders/{id}"))
+  res$content
 }
 
 #' return list of postions
@@ -94,7 +95,7 @@ positions <- function(symbol = NULL){
   } else {
     res<-alpacaGet(glue::glue("positions/{symbol}"))
   }
-  httr::content(res,as = "parsed")
+  res$content
 }
 
 #' a sorted list of tradable stocks
@@ -107,7 +108,7 @@ assets <- function(symbol = NULL){
   } else {
     res<-alpacaGet(glue::glue("assets/{symbol}"))
   }
-  d0 <- httr::content(res,as = "parsed")
+  d0 <- res$content;
   d1 <- lapply(d0,function(x) {lapply(x,function(y) {ifelse(is.null(y),NA,y)})})
   tibble::as_tibble(do.call(rbind,d1)) %>% tidyr::unnest()  %>%
     dplyr::filter(tradable) %>%
@@ -127,7 +128,7 @@ calendar <- function(start = NULL, end=NULL){
     res <- alpacaGet(glue::glue("calendar&start={start}&end={end}"))
 
   }
-  data <-httr::content(res,as = "parsed")
+  data <- res$content;
   tibble::as_tibble(do.call(rbind,data)) %>% tidyr::unnest() %>% dplyr::mutate(ID = row_number())
 }
 
@@ -136,6 +137,6 @@ calendar <- function(start = NULL, end=NULL){
 #' @export
 clock <- function(){
     res <- alpacaGet("clock")
-    httr::content(res,as = "parsed")
+    res$content;
 }
 
