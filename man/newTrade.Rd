@@ -4,8 +4,15 @@
 \alias{newTrade}
 \title{create a new Trade object}
 \usage{
-newTrade(symbol, side, qty, time_in_force = "day", limit_price = NULL,
-  stop_price = NULL, id = NULL)
+newTrade(
+  symbol,
+  side,
+  qty,
+  time_in_force = "day",
+  limit_price = NULL,
+  stop_price = NULL,
+  id = NULL
+)
 }
 \arguments{
 \item{symbol}{a market symbol}

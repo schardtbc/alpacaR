@@ -36,9 +36,6 @@ getSecretKey <- function(){
 
 
 .onLoad <- function(libname, pkgname) {
-  if (file.exists(".env")){
-    readRenviron(".env");
-  }
   env<-Sys.getenv();
   apca<- as.list(env[grep("^APCA",names(env))]);
   config$apiVersion <- coalesce(apca$APCA_API_VERSION,"v1")

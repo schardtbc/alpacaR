@@ -3,7 +3,6 @@
 \docType{package}
 \name{alpacaR}
 \alias{alpacaR}
-\alias{alpacaR-package}
 \title{alpacaR a wrapper for the alpaca trading api}
 \description{
 ##What is Alpaca?
@@ -19,12 +18,14 @@ In their words they provide a portal for you to Hack Financial Systems.
 }
 
 This is functional wrapper which returns data as tibbles, with a few exceptions.
-See the package documentation for call signitures, parameter descriptions.Security Tokens
+See the package documentation for call signitures, parameter descriptions.
+\subsection{Security Tokens}{
 
 During registration at alpaca.markets you were given security tokens required to access this API.
 This wrapper will read those tokens from the .env file. The .env file must include the
 following three key pairs: note(put .env in your .gitignore file)\preformatted{APCA-API-KEY-ID = "..."
 APCA-API-SECRET-KEY = "..."
+}
 }
 }
 \author{

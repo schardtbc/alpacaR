@@ -108,12 +108,13 @@ assets <- function(symbol = NULL){
   } else {
     res<-alpacaGet(glue::glue("assets/{symbol}"))
   }
+  if (res$status) {return (tibble::as_tibble(list()))}
   d0 <- res$content;
   d1 <- lapply(d0,function(x) {lapply(x,function(y) {ifelse(is.null(y),NA,y)})})
   tibble::as_tibble(do.call(rbind,d1)) %>% tidyr::unnest()  %>%
     dplyr::filter(tradable) %>%
-    dplyr::arrange(symbol) %>%
-    dplyr::select(-Archives)
+    dplyr::arrange(symbol)
+
 }
 
 #' market calendar as dataframe
@@ -128,6 +129,7 @@ calendar <- function(start = NULL, end=NULL){
     res <- alpacaGet(glue::glue("calendar&start={start}&end={end}"))
 
   }
+  if (res$status) {return (tibble::as_tibble(list()))}
   data <- res$content;
   tibble::as_tibble(do.call(rbind,data)) %>% tidyr::unnest() %>% dplyr::mutate(ID = row_number())
 }
@@ -137,6 +139,7 @@ calendar <- function(start = NULL, end=NULL){
 #' @export
 clock <- function(){
     res <- alpacaGet("clock")
+    if (res$status) {return (tibble::as_tibble(list()))}
     res$content;
 }
 
